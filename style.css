@@ -1,0 +1,289 @@
+/* ============ Variables ============ */
+:root {
+  --primary: #cbfe1c;
+  --dark: #0b0e13;
+  --light: #f1f1f1;
+  --card: #111827;
+  --muted: #9ca3af;
+}
+
+/* ============ Base ============ */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Chakra Petch", sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+}
+
+h1, h2, h3, h4 { font-family: "Days One", sans-serif; }
+
+.text-primary-ga { color: var(--primary); }
+
+/* ============ Buttons ============ */
+.btn-ga {
+  background: var(--primary);
+  color: var(--dark);
+  font-weight: 700;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 8px 24px;
+  transition: all .3s;
+}
+.btn-ga:hover { background: transparent; color: var(--primary); }
+
+.btn-ga-outline {
+  background: rgba(0, 0, 0, .4);
+  color: var(--primary);
+  font-weight: 700;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  transition: all .3s;
+}
+.btn-ga-outline:hover { background: var(--primary); color: var(--dark); }
+
+.btn-lg { padding: 12px 28px; font-size: 1rem; }
+
+/* ============ Navbar ============ */
+.ga-nav {
+  background: rgba(11, 14, 19, .85);
+  backdrop-filter: blur(10px);
+  padding: 14px 0;
+}
+.ga-nav .nav-link { color: var(--light); font-weight: 500; transition: color .3s; }
+.ga-nav .nav-link:hover,
+.ga-nav .nav-link.active { color: var(--primary); }
+.nav-icon { color: var(--light); font-size: 1.1rem; }
+.nav-icon:hover { color: var(--primary); }
+
+/* ============ Hero ============ */
+.hero {
+  min-height: 100vh;
+  padding: 120px 0 64px;
+  background:
+    linear-gradient(#000000e0, #000000e0),
+    url("images/hero-bg.jpg") center / cover fixed;
+}
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  line-height: 1.2;
+  font-weight: 400;
+}
+.hero-text { max-width: 480px; color: #d1d5db; }
+
+.hero-img {
+  border: 3px solid var(--primary);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(203, 254, 28, .35);
+}
+.players-badge {
+  position: absolute;
+  left: -30px;
+  bottom: -30px;
+  background: var(--dark);
+  border-radius: 14px;
+  padding: 14px 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .6);
+}
+
+/* ============ Sections ============ */
+.section-pad { padding: 96px 0; }
+
+.section-separator { border-top: 1px solid rgba(255, 255, 255, .06); }
+
+.section-label {
+  display: inline-block;
+  position: relative;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: .2em;
+  margin-bottom: 16px;
+}
+.section-label::before,
+.section-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 64px;
+  height: 2px;
+}
+.section-label::before { left: -80px; background: linear-gradient(to right, transparent, var(--primary)); }
+.section-label::after  { right: -80px; background: linear-gradient(to left, transparent, var(--primary)); }
+.section-label-left::before { display: none; }
+.section-label-left { margin-left: 0; }
+
+.section-title { font-size: clamp(2rem, 4vw, 3rem); }
+
+/* ============ Game cards ============ */
+.game-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  height: 320px;
+}
+.game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
+}
+.game-card:hover img { transform: scale(1.1); }
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, .9), transparent 60%);
+}
+.game-overlay h3 { font-size: 1.15rem; margin: 8px 0 0; }
+.tags span {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--dark);
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-right: 6px;
+}
+
+/* ============ What we do ============ */
+.service {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 12px;
+  padding: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: border-color .3s, transform .3s;
+}
+.service:hover { border-color: var(--primary); transform: translateY(-4px); }
+.service i { font-size: 1.8rem; color: var(--primary); }
+.wwd-img { height: 380px; object-fit: cover; }
+
+/* ============ Sponsors marquee ============ */
+.marquee { overflow: hidden; }
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+.marquee-track img {
+  height: 64px;
+  border-radius: 10px;
+  transition: transform .3s;
+}
+.marquee-track img:hover { transform: scale(1.05); }
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* ============ Team cards + BONUS: backdrop-filter hover ============ */
+.team-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--card);
+  cursor: pointer;
+}
+.team-card img { width: 100%; height: 320px; object-fit: cover; display: block; }
+.team-info { padding: 18px; }
+.team-info h3 { font-size: 1.05rem; margin-bottom: 6px; }
+.team-info .role { color: var(--primary); margin: 0; font-weight: 600; }
+.team-info .achv { color: var(--muted); margin: 0; font-size: .9rem; }
+
+/* the overlay that blurs the card behind it on hover */
+.team-hover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 14, 19, .35);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  opacity: 0;
+  transition: opacity .4s, backdrop-filter .4s, -webkit-backdrop-filter .4s;
+}
+.team-hover span {
+  font-family: "Days One", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: .1em;
+  color: var(--primary);
+  transform: translateY(20px);
+  transition: transform .4s;
+}
+.team-card:hover .team-hover {
+  opacity: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.team-card:hover .team-hover span { transform: translateY(0); }
+
+/* ============ Contact ============ */
+.contact-bg { background: linear-gradient(135deg, #111827, var(--dark)); }
+
+.info-item { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 28px; }
+.info-item i {
+  flex: none;
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+  background: rgba(203, 254, 28, .12);
+  color: var(--primary);
+  border-radius: 12px;
+  font-size: 1.3rem;
+}
+.info-item h4 { font-size: 1.05rem; margin: 0 0 4px; }
+.info-item p { margin: 0; color: var(--muted); }
+
+.social {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  background: var(--card);
+  color: var(--light);
+  border-radius: 50%;
+  transition: all .3s;
+}
+.social:hover { background: var(--primary); color: var(--dark); }
+
+.contact-form {
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 16px;
+  padding: 32px;
+}
+.contact-form .form-control,
+.contact-form .form-select {
+  background: var(--dark);
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: var(--light);
+  padding: 12px 14px;
+}
+.contact-form .form-control:focus,
+.contact-form .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 .2rem rgba(203, 254, 28, .2);
+}
+.contact-form .form-check-input:checked { background-color: var(--primary); border-color: var(--primary); }
+
+.stat {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+}
+.stat strong { display: block; font-size: 1.8rem; color: var(--primary); font-family: "Days One", sans-serif; }
+.stat span { color: var(--muted); }
+
+/* ============ Responsive ============ */
+@media (max-width: 991px) {
+  .section-pad { padding: 64px 0; }
+  .players-badge { left: 12px; bottom: -24px; }
+  .hero { background-attachment: scroll; }
+  .section-label::before, .section-label::after { width: 32px; }
+  .section-label::before { left: -44px; }
+  .section-label::after  { right: -44px; }
+}
